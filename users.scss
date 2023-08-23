@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1320px;
+  padding: 30px 20px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.header {
+  border-bottom: 1px solid #21262d;
+  background: #0d1117;
+  .header__searching {
+    width: 100%;
+    .header__searching__input {
+      padding-left: 10px;
+      width: 50%;
+      height: 40px;
+    }
+  }
+}
+
+
+.users__card {
+  display: grid;
+  grid-template-columns: repeat(4, 4fr);
+  gap: 30px;
+  .users__card__box {
+    img {
+      width: 100%;
+    }
+  }
+}
