@@ -4,13 +4,15 @@ import request from "./main.js";
 const UsersCard = document.querySelector(".users__card");
 const Pagination = document.querySelector(".pagination");
 const SearchInput = document.querySelector(".header__searching__input");
+const userName = document.querySelector(".user__aside")
+
 let search = "";
 let activePage = 1;
 
 function getUsers({ avatar_url, login, id, node_id }) {
   return ` <div class="users__card__box">
               <img src="${avatar_url}" alt="">
-              <a>${login}</a>
+              <a href="../user.html?login=${login}">${login}</a>
               <h5>Id: ${id} </h5>
               <h5> ${node_id} </h5>
             </div>`;
@@ -20,8 +22,8 @@ async function getUsersCrud() {
   UsersCard.innerHTML = `<span class="loader"></span>`;
   try {
     let query = new URLSearchParams({
-      page: 3,
-      per_page: LIMIT,
+      page: activePage,
+      per_page: 30,
     });
 
     const Users = await request(`${ENDPOINT}/users?${query}`);
@@ -37,10 +39,9 @@ async function getUsersCrud() {
       let UsersSearch = Users.filter((pr) =>
         pr.login.toLowerCase().includes(search)
       );
-      if (UsersSearch.length !== 0) { 
+      if (UsersSearch.length !== 0) {
         UsersCard.innerHTML = ``;
         UsersSearch.map((pr) => {
-         
           let card = getUsers(pr);
           UsersCard.innerHTML += card;
         });
@@ -49,6 +50,11 @@ async function getUsersCrud() {
       }
     });
     //  search
+    // url...
+    
+    const login = new URLSearchParams(location.search).get("login");
+
+    // url...
 
     Pagination.innerHTML = `<li class="page-item ${
       activePage === 1 ? "disabled" : ""
@@ -104,5 +110,7 @@ function getPage(page) {
   }
   getUsersCrud();
 }
+
+
 
 

@@ -23,6 +23,12 @@
   align-items: center;
   justify-content: space-between;
 }
+@media (max-width: 500px) {
+  .header .header__box {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
 .header .header__box .header__logo {
   display: flex;
   align-items: center;
@@ -31,6 +37,11 @@
 .header .header__searching {
   text-align: end;
   width: 100%;
+}
+@media (max-width: 500px) {
+  .header .header__searching {
+    text-align: center;
+  }
 }
 .header .header__searching .header__searching__input {
   padding-left: 10px;

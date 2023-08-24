@@ -22,6 +22,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media(max-width: 500px) {
+      flex-direction: column;
+      gap: 20px;
+    }
     .header__logo {
       display: flex;
       align-items: center;
@@ -31,6 +35,9 @@
   .header__searching {
     text-align: end;
     width: 100%;
+    @media(max-width: 500px) {
+      text-align: center;
+    }
     .header__searching__input {
       padding-left: 10px;
       width: 50%;
